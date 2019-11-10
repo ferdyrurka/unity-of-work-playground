@@ -4,15 +4,14 @@ declare(strict_types=1);
 namespace App\Domain\Factory;
 
 use App\Domain\Entity\Post;
-use App\UserInterface\DTO\CreatePostDTO;
 
 class PostFactory
 {
-    public function createPostByDto(CreatePostDTO $createPostDTO): Post
+    public function createPost(string $title, string $content): Post
     {
         return new Post(
-            htmlspecialchars($createPostDTO->title),
-            htmlspecialchars($createPostDTO->content)
+            htmlspecialchars($title),
+            htmlspecialchars($content)
         );
     }
 }

@@ -37,7 +37,10 @@ class CreatePostApplicationService
 
     public function create(CreatePostDTO $createPostDTO): void
     {
-        $post = $this->postFactory->createPostByDto($createPostDTO);
+        $post = $this->postFactory->createPost(
+            $createPostDTO->title,
+            $createPostDTO->content
+        );
         $this->postRepository->add($post);
 
         $this->unityOfWork->commit();
